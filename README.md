@@ -1,6 +1,6 @@
-A classic online store with basic functionality.
+# A classic online store with basic functionality
 
-The basic functionality of this online store includes:
+### The basic functionality of this online store includes:
 
 - Product catalog - a list of all products sold in the online store. The catalog can be structured by categories, brands, price ranges, and other product characteristics.
 
@@ -10,7 +10,7 @@ The basic functionality of this online store includes:
 
 - Site administration - allows for managing the content of the site, configuring and updating functionality, controlling order processing and customer interactions.
 
-At the request of the client, this functionality can be supplemented and expanded with the following options:
+### At the request of the client, this functionality can be supplemented and expanded with the following options:
 
 - Payment system - an online system that processes payments from buyers. Typically, an online store works with several payment systems to provide buyers with various payment options, such as credit cards, electronic money, bank transfers, etc.
 
@@ -20,12 +20,15 @@ At the request of the client, this functionality can be supplemented and expande
 
 - Customer service - customer support that provides feedback between the buyer and the store. Customer service may include online chats, email, and support phone lines.
 
-To install the project on your local computer, follow these steps:
+### To install the project on your local computer, follow these steps:
 
 - Clone the repository to your local machine.
 - Create a virtual environment and activate it.
-- Install the dependencies from the requirements.txt file.
+- Install the dependencies from the [requirements.txt] file.
 - Create the database and run the migrations.
 - Start the server.
 
-This project is licensed under the MIT License.
+### License
+MIT
+
+[requirements.txt]: ../requirements.txt
