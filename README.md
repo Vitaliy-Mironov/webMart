@@ -31,4 +31,4 @@
 ### License
 MIT
 
-[requirements.txt]: ../requirements.txt
+[requirements.txt]: ./requirements.txt
