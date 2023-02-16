@@ -1,0 +1,64 @@
+<script>
+	window.onload = function () {
+		document.body.classList.add('loaded_hiding');
+		window.setTimeout(function () {
+			document.body.classList.add('loaded');
+			document.body.classList.remove('loaded_hiding');
+		}, 500);
+	}
+</script>
+
+<footer class="bd-footer py-4 py-md-5 mt-5 bg-light">
+	<div class="container py-4 py-md-5 px-4 px-md-3">
+	  <div class="row">
+		<div class="col">
+		  <a class="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" href="{% url 'shop:home' %}" aria-label="Bootstrap">
+			<span class="fs-5">WebMart</span>
+		  </a>
+		  <ul class="list-unstyled small text-muted">
+			<li class="mb-2">ООО «ВЭБМАРТ», г. Минск, ул.Тармашева 13а, помещение 4, офис 16</li>
+			<li class="mb-2">Дата включения сведений об интернет-магазине в Торговый реестр Республики Беларусь 30.02.2023</li>
+			<li class="mb-2">Телефон для связи: <a href="tel:+375171234567">+375 17 123-45-67</a></li>
+			<li class="mb-2">Режим работы: круглосуточно</li>
+			<li class="mb-2">Лицо, уполномоченное продавцом рассматривать обращения покупателей о нарушении их прав, предусмотренных законодательством о защите прав потребителей – Иванов Иван Иванович, тел. <a href="tel:+375291234567">+375 29 123-45-67</a></li>
+			<li class="mb-2">Номера городских телефонов уполномоченных по защите прав потребителей:<br/>
+			<a href="tel:+375172727384">+375 17 272-73-84</a> – администрация Фрунзенского района г. Минска<br/>
+			<a href="tel:+375172180082">+375 17 218-00-82</a> – главное управление торговли и услуг Мингорисполкома</li>
+			<li class="mb-2"><script>copyrightYears()</script> © WebMart. Все права защищены.</li>
+            <li class="mb-2">Разработка сайта: <a href="https://www.linkedin.com/in/vitaliy-mironov" target="_blank">В.А.Миронов</a><br/>
+		  </ul>
+		</div>
+		<div class="col-12 col-lg-2 offset-lg-1 mb-3">
+		  <h5>Покупателям</h5>
+		  <ul class="list-unstyled">
+			<li class="mb-2"><a href="#" class="link-secondary">Как сделать заказ</a></li>
+			<li class="mb-2"><a href="#">Способы оплаты</a></li>
+			<li class="mb-2"><a href="#">Доставка</a></li>
+			<li class="mb-2"><a href="#">Возврат товара</a></li>
+			<li class="mb-2"><a href="#">Возврат денежных средств</a></li>
+			<li class="mb-2"><a href="#">Публичная оферта</a></li>
+			<li class="mb-2"><a href="#">Вопросы и ответы</a></li>
+		  </ul>
+		</div>
+		<div class="col-6 col-lg-2 mb-3">
+		  <h5>Компания</h5>
+		  <ul class="list-unstyled">
+			<li class="mb-2"><a href="#">О нас</a></li>
+			<li class="mb-2"><a href="#">Реквизиты</a></li>
+			<li class="mb-2"><a href="{% url 'shop:contacts' %}">Контакты</a></li>
+		  </ul>
+		</div>
+		<div class="col-6 col-lg-2 mb-3">
+		  <h5>Мы в соцсетях</h5>
+		  <ul class="list-unstyled">
+			<li class="mb-2 icon-paper-plane"><a href="#">Телеграм</a></li>
+			<li class="mb-2 icon-vkontakte"><a href="#">Вконтакте</a></li>
+			<li class="mb-2 icon-odnoklassniki"><a href="#">Однокласс&shy;ники</a></li>
+			<li class="mb-2 icon-youtube"><a href="#">YouTube</a></li>
+		  </ul>
+		</div>
+	  </div>
+	</div>
+  </footer>
+
+<button onclick="topFunction()" id="upBtn" title="Вверх" class="icon-arrow-up"></button>

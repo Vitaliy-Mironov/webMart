@@ -1,0 +1,15 @@
+{% if bread != "Главная" %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'shop:home' %}">ГЛАВНАЯ</a></li>
+    {% if prod %}
+        <li class="breadcrumb-item"><a href="/{{cat.slug}}">{{cat.name|upper}}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{prod.name|upper}}</li>
+    {% elif cat %}
+        <li class="breadcrumb-item active" aria-current="page">{{cat.name|upper}}</li>
+    {% else %}
+        <li class="breadcrumb-item active" aria-current="page">{{bread|upper}}</li>
+    {% endif %}
+    </ol>
+</nav>
+{% endif %}

@@ -1,0 +1,5 @@
+{% extends 'blank.html' %}
+{% block content %}
+<p>Неправильно набран адрес</br>или такой страницы не существует</p>
+<a class="btn btn-outline-primary" href="{% url 'shop:home' %}" role="button">Перейти на главную</a>
+{% endblock content %}

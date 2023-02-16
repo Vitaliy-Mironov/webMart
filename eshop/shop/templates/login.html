@@ -1,0 +1,32 @@
+{% extends 'blank.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 top-bottom-space">
+            <div class="d-flex text-uppercase top-space">Зарегистрированный пользователь</div>
+            {% load crispy_forms_tags %}
+            <form method="post" class='form'>
+                {% csrf_token %}
+                {% for f in form %}
+                <div class="col-sm-8 top-space">
+                    {{ f|as_crispy_field }}
+                </div>
+                {% endfor %}
+                {{ form.non_field_errors }}
+                <div class="col-sm-8 top-space">
+                    <button type="submit" class="btn btn-primary">Войти</button>
+                </div>
+            </form>
+        </div>
+        <div class="bg-primary bg-opacity-10 rounded col-md-6 top-bottom-space">
+            <div class="d-flex text-uppercase top-space">Новый пользователь</div>
+            <div class="d-flex top-space">
+                <a href="{% url 'shop:registration' %}">
+                    <button type="button" class="btn btn-outline-primary">Зарегистрироваться</button>
+                </a>
+            </div>
+            <div class="form-text top-bottom-space">Зарегистрированные пользователи получают доступ в Личный кабинет, соответственно имеют возможность отслеживать историю своих заказов, пользоваться списком избранных товаров и другие современные технологии взаимодействия с сайтом.</div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

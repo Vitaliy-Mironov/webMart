@@ -1,0 +1,61 @@
+{% extends 'blank.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+{% if cart %}
+
+
+<p class="lead top-space">Товары в корзине:</p>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 top-bottom-space">
+    {% for item in cart %}
+        {% with prod=item.product %}
+            <div class="col">
+                <div class="card text-center">
+                    {% include 'includes/prod_images_carousel.html' %}
+                    <div class="card-body position-relative">
+                        <h5 class="card-title">{{prod}}</h5>
+                        <a class="card-text stretched-link" href="{{ prod.get_absolute_url }}">Артикул: {{prod.article_number}}</a>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Цена за единицу товара: <span class="display-6">{{item.price}}</span></p>
+                        <form action="{% url 'cart:cart_add' prod.id %}" method="post" class="input-group mb-3">
+                            {% csrf_token %}
+                            <div class="form-control text-center rounded-start-2" aria-describedby="button-addon2" id="prod{{item.product.id}}">
+                                {{ item.update_quantity_form.quantity|as_crispy_field }}
+                                {{ item.update_quantity_form.update }}
+                                <script>
+                                    var parent = document.getElementById('prod{{item.product.id}}');
+                                    parent.querySelector('#id_quantity').setAttribute('max', {{item.product.balance}});
+                                </script>
+                            </div>
+                            <button type="submit" class="btn btn-outline-secondary" id="button-addon2">Обновить</button>
+                        </form>
+                        <p class="card-text text-danger">Сумма: <span class="display-6">{{item.total_price}}</span></p>
+                    </div>
+                    <div class="card-body">
+                        <a class="btn btn-outline-secondary" href="{% url 'cart:cart_remove' prod.id %}">Удалить из корзины</a>
+                    </div>
+                </div>
+            </div>
+        {% endwith %}
+    {% endfor %}
+</div>
+
+<p class="fw-light">* Выбор количества товара ограничен максимальным свободным остатком данного товара на складе магазина.</p>
+<hr>
+
+<div class="display-6">Всего товаров в корзине: {{ cart|length }}, на сумму {{ cart.get_total_price }}руб.</div>
+
+<div class="row top-bottom-space">
+    <div class="col">
+        <a class="btn btn-danger btn-lg" href="{% url 'cart:cart_sale' %}">Оформить заказ</a>
+    </div>
+</div>
+
+{% else %}
+<p>У Вас нет товаров в корзине.</p>
+{% endif %}
+
+{% endblock content %}

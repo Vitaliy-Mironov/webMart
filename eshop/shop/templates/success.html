@@ -1,0 +1,7 @@
+{% extends 'blank.html' %}
+{% block content %}
+<p class="icon-dot">Вы успешно зарегистрировались в нашем интернет-магазине!</p>
+<p class="icon-dot-2 fw-bolder">Вы уже автоматически авторизованы и можете приступать к покупкам.</p>
+<p class="icon-dot-3">В следующий раз для входа на наш сайт используйте указанный Вами логин и пароль.</p>
+    <a class="btn btn-outline-primary" href="{% url 'shop:home' %}" role="button">Перейти на главную</a>
+{% endblock content %}

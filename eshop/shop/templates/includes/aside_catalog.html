@@ -1,0 +1,29 @@
+{% load shop_tags %}
+{% get_categories as categories %}
+<nav class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasCatalog" aria-labelledby="offcanvasCatalogLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasCatalogLabel">Каталог</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="accordion accordion-flush" id="accordionFlushCatalog">
+            {% for category in categories %}
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flushCatalog-heading-{{ category.id }}">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flushCatalog-collapse-{{ category.id }}" aria-expanded="false" aria-controls="flushCatalog-collapse-{{ category.id }}">{{ category.name }}</button>
+              </h2>
+              <div id="flushCatalog-collapse-{{ category.id }}" class="accordion-collapse collapse" aria-labelledby="flushCatalog-heading-{{ category.id }}" data-bs-parent="#accordionFlushCatalog">
+                <div class="accordion-body">
+                  <ul class="list-group list-group-flush">
+                    {% get_subcategories filter=category as subcategories %}
+                    {% for subcategory in subcategories %}
+                    <li class="list-group-item"><a href="/{{ subcategory.slug }}/" class="list-group-link">{{ subcategory.name }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+    </div>
+</nav>

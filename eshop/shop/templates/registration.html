@@ -1,0 +1,68 @@
+{% extends 'blank.html' %}
+{% block content %}
+
+{% load crispy_forms_tags %}
+<form method="post" class='form'>
+    <div class="row">
+        <p>Поля, отмеченные 'звёздочкой' (*) - обязательны для заполнения.</p>
+        <p>Имя пользователя (логин) может содержать только буквы, цифры и знаки @/./+/-/_.</p>
+    </div>
+    {% csrf_token %}
+    {% for f in form %}
+    <div class="col-sm-4 top-space">
+        {{ f|as_crispy_field }}
+    </div>
+    {% endfor %}
+    <div class="col-sm-4 top-space">
+        <button type="submit" class="btn btn-primary">Отправить данные</button>
+    </div>
+</form>
+
+{% comment %} {% load crispy_forms_tags %}
+<form action={% url 'shop:registration' %} method="post" class='form'>
+    {% csrf_token %}
+    <div class="row">
+        <p>Поля, отмеченные 'звёздочкой' (*) - обязательны для заполнения.</p>
+        <p>Пароль может содержать только символы латинского алфавита, цифры и спецсимволы.<br>
+        Длина пароля должна составлять не менее 8 и не более 20 знаков.</p>
+    </div>
+    <div class="row top-space">
+        <div class="col-sm-4">
+            {{ form.first_name|as_crispy_field }}
+        </div>
+        <div class="col-sm-4">
+            {{ form.last_name|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row top-space">
+        <div class="col-sm-4">
+            {{ form.email|as_crispy_field }}
+        </div>
+        <div class="col-sm-4">
+            {{ form.phone|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-sm-8">
+            {{ form.adress|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row top-space">
+        <div class="col-sm-4">
+            {{ form.password|as_crispy_field }}
+            <a href="javascript:void(0);" onclick="generatePassword('id_password')" class="fw-lighter">
+                Сгенерировать надёжный пароль</a>
+        </div>
+    </div>
+    <div class="row top-space">
+        <p>
+            Отправляя эти данные, Вы даёте согласие с обработкой
+            персональных данных в соответствии с
+            <a href="#">политикой обработки персональных данных</a>.
+        </p>
+    </div>
+    {{ form.error }}
+    <button type="submit" class="btn btn-primary">Отправить данные</button>
+</form> {% endcomment %}
+
+{% endblock content %}

@@ -1,0 +1,59 @@
+<header>
+
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'shop:home' %}">WebMart</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active icon-th-list" href="#" aria-current="page" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCatalog" aria-controls="offcanvasWithBothOptions">Каталог</a>
+                </li>
+                {% if request.user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link active dropdown-toggle icon-user" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ user.username }}
+                    </a>
+                    <ul class="dropdown-menu">
+                      {% comment %} <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><hr class="dropdown-divider"></li> {% endcomment %}
+                      <li><a class="dropdown-item" href="{% url 'shop:logout' %}">Выход</a></li>
+                    </ul>
+                  </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link active icon-user" href="{% url 'shop:login' %}">Вход</a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    {% if cart|length > 0 %}
+                    <a class="nav-link icon-shopping-basket text-danger position-relative" href="{% url 'cart:cart_detail' %}">Корзина (товаров: {{ cart|length }}, на сумму: {{ cart.get_total_price }}р.)</a>
+                    {% else %}
+                    <a class="nav-link icon-shopping-basket disabled" href="#">Корзина</a>
+                    {% endif %}
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link icon-heart-empty disabled">Избранное</a>
+                </li>
+            </ul>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search">
+                <button class="btn btn-dark" type="submit"><span class="icon-search"></span></button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+{% include 'includes/aside_catalog.html' %}
+
+</header>
+
+<div class="preloader">
+    <div class="preloader_row">
+        <div class="preloader_item"></div>
+        <div class="preloader_item"></div>
+    </div>
+</div>
