@@ -2,13 +2,13 @@
 
 ### The basic functionality of this online store includes:
 
-- Product catalog - a list of all products sold in the online store. The catalog can be structured by categories, brands, price ranges, and other product characteristics.
+- `Product catalog` - a list of all products sold in the online store. The catalog can be structured by categories, brands, price ranges, and other product characteristics.
 
-- User authorization - allows for more convenient and personalized user interaction with the online store, as well as increasing the security of online purchases.
+- `User authorization` - allows for more convenient and personalized user interaction with the online store, as well as increasing the security of online purchases.
 
-- Checkout process - the process that allows the buyer to select products from the catalog, add them to the cart, and place an order. In this process, the buyer usually provides delivery address, payment method, and other necessary information.
+- `Checkout process` - the process that allows the buyer to select products from the catalog, add them to the cart, and place an order. In this process, the buyer usually provides delivery address, payment method, and other necessary information.
 
-- Site administration - allows for managing the content of the site, configuring and updating functionality, controlling order processing and customer interactions.
+- `Site administration` - allows for managing the content of the site, configuring and updating functionality, controlling order processing and customer interactions.
 
 ### At the request of the client, this functionality can be supplemented and expanded with the following options:
 
