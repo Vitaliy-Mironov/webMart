@@ -1,4 +1,4 @@
-# A classic online store with basic functionality
+# A classic online store with basic functionality (beta)
 
 ### The basic functionality of this online store includes:
 
