@@ -13,6 +13,18 @@ from cart.forms import CartAddProductForm
 from django.http import HttpResponseRedirect
 
 
+def complete(request):
+    data = {
+        'title': 'Спасибо за покупку!',
+        'description': 'Заказ успешно оплачен. Спасибо за покупку!',
+        'h1': 'Заказ успешно оплачен. Спасибо за покупку!',
+        'h1_class': 'icon-ok-seccess',
+        'bread': '...',
+    }
+
+    return render(request, 'complete.html', context=data)
+
+
 class Contacts(FormView):
     form_class = ContactForm
     template_name = 'contacts.html'
