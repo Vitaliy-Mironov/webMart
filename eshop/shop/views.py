@@ -1,4 +1,3 @@
-# from django.http import HttpResponseNotFound
 from django.shortcuts import render, get_object_or_404
 from .models import Subcategory, Product
 from .forms import RegisterUserForm, LoginUserForm, ContactForm
@@ -73,7 +72,6 @@ class LoginUser(LoginView):
 
 def logout_user(request):
     logout(request)
-    # return redirect('shop:login')
     # Возврат на страницу, вызвавшую функцию
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
@@ -81,7 +79,6 @@ def logout_user(request):
 class RegisterUser(CreateView):
     form_class = RegisterUserForm
     template_name = 'registration.html'
-    # success_url = reverse_lazy('shop:registration_success')
 
     def get_context_data(self, *args, **kwargs):
         context = super(RegisterUser, self).get_context_data(*args, **kwargs)

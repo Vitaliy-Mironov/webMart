@@ -1,5 +1,4 @@
 from django.db import models
-# from django.urls import reverse
 
 
 class Brand(models.Model):
@@ -230,57 +229,3 @@ class Product(models.Model):
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
         ordering = ['category', 'brand', 'name']
-
-
-# class User(models.Model):
-#     first_name = models.CharField(
-#         max_length=100,
-#         verbose_name='Имя',
-#         )
-#     last_name = models.CharField(
-#         max_length=100,
-#         blank=True,
-#         default='',
-#         verbose_name='Фамилия',
-#         )
-#     email = models.EmailField(
-#         max_length=100,
-#         unique=True,
-#         verbose_name='Email',
-#         )
-#     phone = models.PositiveBigIntegerField(
-#         help_text='Только цифры с кодом, например: 375291234567',
-#         verbose_name='Мобильный телефон (А1, МТС, life)',
-#         )
-#     adress = models.CharField(
-#         max_length=255,
-#         blank=True,
-#         default='',
-#         verbose_name='Адрес',
-#         )
-#     password = models.CharField(
-#         max_length=20,
-#         # help_text='8 - 20 знаков. A-Z, a-z, 0-9, спецсимволы.',
-#         verbose_name='Пароль',
-#         )
-#     time_create = models.DateTimeField(
-#         auto_now_add=True,
-#         null=True,
-#         verbose_name='Добавлен',
-#         )
-#     time_update = models.DateTimeField(
-#         auto_now=True,
-#         null=True,
-#         verbose_name='Изменён',
-#         )
-#     favorites = models.ManyToManyField(
-#         'Product',
-#         blank=True,
-#         )
-
-#     def __str__(self):
-#         return f'{self.first_name} {self.last_name}'
-
-#     class Meta:
-#         verbose_name = 'Покупатель'
-#         verbose_name_plural = 'Покупатели'

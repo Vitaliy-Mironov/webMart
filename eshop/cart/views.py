@@ -52,5 +52,4 @@ def cart_sale(request):
         product.balance = remainder
         product.save(update_fields=["balance"])
         cart.remove(product)
-    # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     return redirect('shop:complete')
