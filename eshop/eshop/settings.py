@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 # Капча
