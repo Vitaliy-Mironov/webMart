@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
-from shop.models import Product
+from eshop.settings import UNAUTHORIZED_USER_ID
+from shop.models import Product, Order, OrderContent
 from .cart import Cart
 from .forms import CartAddProductForm
 from django.http import HttpResponseRedirect
@@ -39,6 +40,36 @@ def cart_datail(request):
         'bread': 'Корзина',
     }
     return render(request, 'cart/detail.html', context=data)
+
+
+def cart_save(request):
+    """_
+    Сохранение заказа в БД
+    """
+    cart = Cart(request)
+    if request.user.is_authenticated:
+        id = request.user.id
+    else:
+        id = UNAUTHORIZED_USER_ID
+    order = Order.objects.create(
+        customer_id=id,
+        total_value=cart.get_total_price(),
+        is_paid=True
+    )
+    for item in cart:
+        prod_id = item['product'].id,
+        price = item['price'],
+        quantity = item['quantity'],
+        total_value = item['total_price'],
+        order_content = OrderContent(
+            product_id=prod_id[0],
+            product_price=price[0],
+            product_quantity=quantity[0],
+            product_total_value=total_value[0],
+            order=order
+        )
+        order_content.save()
+    return redirect('cart:cart_sale')
 
 
 def cart_sale(request):
