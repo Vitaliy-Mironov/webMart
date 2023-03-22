@@ -79,6 +79,15 @@ class ProductAdmin(admin.ModelAdmin):
 class ItemsInline(admin.TabularInline):
     model = OrderContent
     fk_name = 'order'
+    readonly_fields = ('id', 'itemname_show', )
+    fields = ('itemname_show', 'product_price', 'product_quantity',
+              'product_total_value')
+    classes = ('collapse', )
+
+    def itemname_show(self, obj):
+        prod = Product.objects.get(id=obj.product_id)
+        return f'{prod}'
+    itemname_show.__name__ = 'Наименование'
 
     def has_add_permission(self, request, obj):
         return False
@@ -98,9 +107,21 @@ class OrderAdmin(admin.ModelAdmin):
     search_fields = ('id', )
     search_help_text = 'Поиск по номеру заказа.'
     actions = ['paid', 'no_paid', 'delivered', 'no_delivered']
-    inlines = [ItemsInline,]
+    inlines = [ItemsInline, ]
     readonly_fields = ('customer_id', 'customer_comment', 'total_value',
-                       'time_create', 'time_update',)
+                       'time_create', 'time_update',
+                       'username_show', 'usercontacts_show', 'user_link')
+    fields = (('username_show', 'usercontacts_show', 'user_link'),
+              'customer_comment',
+              ('time_create', 'time_update'),
+              ('status', 'is_paid', 'is_delivered'),
+              'manager_comment',
+              'total_value')
+
+    def user_link(self, obj):
+        user_id = obj.customer_id
+        return mark_safe(f"<a href='/admin/auth/user/{user_id}/change/'>{user_id}</a>")
+    user_link.__name__ = 'ID'
 
     def has_add_permission(self, request, obj=None):
         return False
