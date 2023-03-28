@@ -1,4 +1,4 @@
-# The classic online store with basic functionality (beta)
+# The classic online store with basic functionality (demo)
 
 ### Basic functionality of this online store includes:
 
