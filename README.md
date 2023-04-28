@@ -10,6 +10,14 @@
 
 - `Site administration` - allows to manage site content, control order processing and interaction with customers.
 
+### This functionality can be supplemented and expanded with the following options at the customer's request:
+
+- Payment system - an online system that processes payments from customers.
+
+- Inventory management - a process that allows a store to manage inventory levels, obtain availability information, and manage inventory.
+
+- Customer service - customer support that provides feedback between the customer and the store. Customer service can include online chat, email, and phone support lines.
+
 ### To install the project on your local computer, follow these steps:
 
 - Clone the repository to your local machine.
